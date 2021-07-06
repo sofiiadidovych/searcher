@@ -1,2 +1,2 @@
-# searcher
+# Searcher
 Search as you type
