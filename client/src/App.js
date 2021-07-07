@@ -3,7 +3,7 @@ import "./App.css";
 import SearchBox from "./components/SearchBox/SearchBox";
 import ClientsList from "./components/ClientsList/ClientsList";
 
-const CLIENTS_API = "/api/clients";
+const CLIENTS_API = "/data/clients";
 
 function App() {
   const [clients, setClients] = useState([]);
@@ -13,7 +13,7 @@ function App() {
     setIsLoading(true);
     fetch(CLIENTS_API)
       .then((res) => res.json())
-      .then((data) => setClients(data.message))
+      .then((fetchedmeals) => setClients(fetchedmeals))
       .finally(() => setIsLoading(false));
   }, []);
 
@@ -22,7 +22,7 @@ function App() {
       <header className="App-header">
         <p>{!clients ? "Loading..." : clients}</p>
         <SearchBox />
-        <ClientsList />
+        <ClientsList clients={clients}/>
       </header>
     </div>
   );

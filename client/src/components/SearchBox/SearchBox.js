@@ -4,10 +4,7 @@ import "./SearchBox.css";
 function SearchBox() {
   return (
     <>
-      <label>Country1</label>
-      <select>
-        <option value="Uk" >United K</option>
-      </select>
+      <input placeholder="Search"></input>
     </>
   );
 }
