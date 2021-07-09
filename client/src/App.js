@@ -1,29 +1,39 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import SearchBox from "./components/SearchBox/SearchBox";
-import ClientsList from "./components/ClientsList/ClientsList";
+import ClientList from "./components/ClientList/ClientList";
+import ClientSearch from "./components/ClientSearch/ClientSearch";
 
-const CLIENTS_API = "/data/clients";
+const CLIENTS_API = "/api/clients";
 
 function App() {
   const [clients, setClients] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [foundClients, setFoundClients] = useState("");
+
+  const searchClient = (newSearchQuery) => {
+    setSearchQuery(newSearchQuery);
+    clients.map((client) => {
+      if (client.includes(searchQuery)) {
+        setFoundClients(client);
+      }
+    });
+  };
 
   useEffect(() => {
     setIsLoading(true);
     fetch(CLIENTS_API)
       .then((res) => res.json())
-      .then((fetchedmeals) => setClients(fetchedmeals))
+      .then((fetchedClients) => {
+        setClients(fetchedClients);
+      })
       .finally(() => setIsLoading(false));
   }, []);
 
   return (
     <div className="App">
-      <header className="App-header">
-        <p>{!clients ? "Loading..." : clients}</p>
-        <SearchBox />
-        <ClientsList clients={clients}/>
-      </header>
+      <ClientSearch searchClient={searchClient} clients={clients} />
+      {isLoading ? <p>"Loading..."</p> : <ClientList clients={clients} />}
     </div>
   );
 }

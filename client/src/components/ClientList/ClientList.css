@@ -1,0 +1,17 @@
+.clients-list {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  flex-direction: column;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.clients-list li {
+  text-align: left;
+  list-style: none;
+  padding: 0.1em;
+}
+
+img {
+  width: 1.5em;
+}
