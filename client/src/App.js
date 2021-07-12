@@ -8,16 +8,13 @@ const CLIENTS_API = "/api/clients";
 function App() {
   const [clients, setClients] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
-  const [foundClients, setFoundClients] = useState("");
 
-  const searchClient = (newSearchQuery) => {
-    setSearchQuery(newSearchQuery);
-    clients.map((client) => {
-      if (client.includes(searchQuery)) {
-        setFoundClients(client);
-      }
-    });
+  const searchClient = (searchQuery) => {
+    fetch(CLIENTS_API + "?search=" + searchQuery)
+      .then((res) => res.json())
+      .then((fetchedClients) => {
+        setClients(fetchedClients);
+      });
   };
 
   useEffect(() => {
