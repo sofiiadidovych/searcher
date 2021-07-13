@@ -10,7 +10,9 @@ function ClientList({ clients }) {
           return (
             <li key={client.id.$oid}>
               <img src={client.photo} alt="client's photo" />
-              {client.first_name} {client.last_name} {client.origin}
+              {client.first_name} {client.last_name}
+              <p>Country of origin: {client.origin}</p>
+              <p>Email: {client.email}</p>
             </li>
           );
         })}

@@ -1,17 +1,22 @@
 .clients-list {
-  display: flex;
-  justify-content: center;
-  align-self: center;
-  flex-direction: column;
-  font-family: Arial, Helvetica, sans-serif;
+  text-align: left;
+  width: 20em;
 }
 
 .clients-list li {
-  text-align: left;
   list-style: none;
-  padding: 0.1em;
+  border: 1px solid rgb(241, 196, 196);
+  border-radius: 1%;
+  margin: 1% 0;
+  padding: 0.5em;
 }
 
 img {
-  width: 1.5em;
+  width: 2em;
+  padding-right: 0.2em;
+}
+
+.clients-list p {
+  font-size: 0.7em;
+  color: rgb(243, 181, 224);
 }
