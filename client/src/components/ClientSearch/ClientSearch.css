@@ -7,14 +7,17 @@ input {
 }
 
 .suggestions {
+  background-color: #282c34;
+  position: absolute;
   border: 1px solid #999;
   list-style: none;
   margin-top: 0;
-  max-height: 20em;
+  max-height: 30em;
   overflow-y: auto;
   padding-left: 0;
-  width: 20em + 1rem;
+  width: 30em;
   font-size: 0.7em;
+  z-index: 1;
 }
 
 .suggestions li {

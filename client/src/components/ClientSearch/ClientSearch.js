@@ -33,6 +33,7 @@ function ClientSearch({ clients, searchClient }) {
       setClientIndex(0);
       if (clientIndex >= 0 && clientIndex < clients.length) {
         setUserInput(clientToString(clients[clientIndex]));
+        searchClient(clientToString(clients[clientIndex]));
       }
     }
     //User presses Arrow up key
