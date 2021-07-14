@@ -6,26 +6,28 @@ function ClientSearch({ clients, searchClient }) {
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [userInput, setUserInput] = useState("");
 
+  //To describe the client in the suggestion list
   const clientToString = (client) => {
     return `${client.first_name} ${client.last_name} ${client.origin}`;
-  }
+  };
 
+  //Every time the user types in the search bar
   const onChange = (event) => {
     searchClient(event.target.value);
     setClientIndex(0);
     setShowSuggestions(true);
-    setUserInput(event.currentTarget.value);
-    console.log("Inside", event.currentTarget.value);
+    setUserInput(event.target.value);
   };
 
+  //Every time user clicks on suggestion
   const onClick = (event) => {
     setClientIndex(0);
     setShowSuggestions(false);
-    setUserInput(event.currentTarget.innerText);
-    searchClient(event.currentTarget.innerText);
+    setUserInput(event.target.innerText);
+    searchClient(event.target.innerText);
   };
 
-  //Add functionality to let the user choose an iteem in the list using the keyboard
+  //Add functionality to let the user choose an item in the suggestion list using the keyboard
   const onKeyDown = (event) => {
     //User presses Enter key
     if (event.keyCode === 13) {
@@ -45,7 +47,7 @@ function ClientSearch({ clients, searchClient }) {
     }
     //User presses Arrow down key
     else if (event.keyCode === 40) {
-      if (clientIndex - 1 === clients.length) {
+      if (clientIndex === clients.length - 1) {
         return;
       }
       setClientIndex(clientIndex + 1);
@@ -68,6 +70,8 @@ function ClientSearch({ clients, searchClient }) {
               <li
                 key={client.id.$oid}
                 onClick={onClick}
+                //If index of the currect item is equal to the selected
+                //client index the special class will be applied
                 className={index === clientIndex ? "suggestion-active" : ""}
               >
                 {clientToString(client)}

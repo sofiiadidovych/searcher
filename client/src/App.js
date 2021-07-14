@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import ClientList from "./components/ClientList/ClientList";
 import ClientSearch from "./components/ClientSearch/ClientSearch";
@@ -10,22 +10,14 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
 
   const searchClient = (searchQuery) => {
-    fetch(CLIENTS_API + "?search=" + searchQuery)
-      .then((res) => res.json())
-      .then((fetchedClients) => {
-        setClients(fetchedClients);
-      });
-  };
-
-  useEffect(() => {
     setIsLoading(true);
-    fetch(CLIENTS_API)
+    fetch(`${CLIENTS_API}?search=${searchQuery}`)
       .then((res) => res.json())
       .then((fetchedClients) => {
         setClients(fetchedClients);
       })
       .finally(() => setIsLoading(false));
-  }, []);
+  };
 
   return (
     <div className="App">
