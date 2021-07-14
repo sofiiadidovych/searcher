@@ -1,8 +1,9 @@
-<p align="center">
+<h3 align="center">
   <a href="https://search-as-you-type.herokuapp.com/" >
  <img width=20px height=20px src="./client/public/icons8-search-48.png" alt="Project logo"></a>
- <h3 align="center">Searcher</h3>
-</p>
+ Searcher
+</h3>
+
 
 <hr>
 <p align="center"> Search as you type
